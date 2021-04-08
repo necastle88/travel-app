@@ -1,0 +1,25 @@
+$logoFont: 'Modak', cursive;
+$baseFont: 'Cabin', sans-serif;
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    background-color: #fff;
+    box-shadow: 0px 4px 9px -3px rgba(0,0,0,0.23);
+    
+    .header_logo {
+        font-family: $logoFont;
+        font-size: 2rem;
+        color: #5233af;    
+    }
+
+    .header_nav {
+        font-family: $baseFont;
+        font-size: 1.1rem;
+        align-items: center;
+        display: flex;
+        padding-left: 5.6rem;
+        color: #36454f;
+    }
+}

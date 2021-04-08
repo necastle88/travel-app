@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Modak&display=swap" rel="stylesheet">
+        <title>NLP</title>
+    </head>
+
+    <body>
+
+        <header>
+            <div class="header_logo">
+                NLP
+            </div>
+            <div class="header_nav">
+                Natural language processing
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <form class="section_form" onsubmit="return Client.handleSubmit(event)">
+                    <textarea id="form__user-input" type="text" autofocus='true' name="input" rows="10" cols="50" value="" placeholder="Enter text here"></textarea>
+                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                </form>
+            <section>
+
+            <section class="section_results">
+                <strong>Results:</strong>
+                <div id="section_results"></div>
+            </section>
+        </main>
+    </body>
+</html>
