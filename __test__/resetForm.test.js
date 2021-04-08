@@ -1,5 +1,5 @@
-import { add } from '../src/client/js/helpers/resetForm';
+import { resetTextValue } from '../src/client/js/helpers/resetText';
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(add(1, 2)).toBe(3);
+test('resets any text value to = ""', () => {
+  expect(resetTextValue()).toBe("");
 });

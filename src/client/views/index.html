@@ -12,26 +12,29 @@
     <body>
 
         <header>
-            <div class="header_logo">
+            <div class="header header--logo">
                 NLP
-            </div>
-            <div class="header_nav">
-                Natural language processing
             </div>
         </header>
 
         <main>
-            <section>
-                <form class="section_form" onsubmit="return Client.handleSubmit(event)">
-                    <textarea id="form__user-input" type="text" autofocus='true' name="input" rows="10" cols="50" value="" placeholder="Enter text here"></textarea>
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
-                </form>
+            <section class="section section--hero">
+                <div class="form form--hero-search">
+                    <form class="form form--hero">  
+                        <input class="form__input form__input--destination" type="text" />
+                        <input class="form__input form__input--arrival-date"  type="date" />
+                        <input class="form__input form__input--departure-date"  type="date" />
+                        <input class="form__submit form__submit--disabled" type="submit" />
+                    </form>
+                </div>
             <section>
 
             <section class="section_results">
-                <strong>Results:</strong>
-                <div id="section_results"></div>
+              
             </section>
         </main>
+        <footer>
+
+        </footer>
     </body>
 </html>
