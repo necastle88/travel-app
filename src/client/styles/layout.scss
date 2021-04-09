@@ -1,0 +1,26 @@
+.hero--background {
+  grid-area: hero;
+}
+
+.section--result {
+  grid-area: result;
+}
+
+.section--trips-added {
+  grid-area: trips;
+}
+
+footer {
+  grid-area: footer;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 3rem 10rem auto 10rem 3rem;
+  grid-template-rows: 60% 40% 36% 9%;
+  grid-template-areas: 
+    "hero hero hero hero hero" 
+    ". . result . ."
+    ". . trips . ."
+    ". . footer . .";
+}
