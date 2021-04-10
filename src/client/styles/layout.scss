@@ -1,7 +1,8 @@
 header {
   grid-area: head;
-  z-index: 999;
-  align-self: center;
+  margin: 20px 12px 12px 121px;
+  z-index: 100;
+  text-align: right;
 }
 
 .section--result {
@@ -19,9 +20,9 @@ footer {
 body {
   display: grid;
   grid-template-columns: .1fr .3fr 1fr .3fr .1fr;
-  grid-template-rows: 6% 60% 40% 36% 9%;
+  grid-template-rows: 0% 60% 40% 36% 9%;
   grid-template-areas:
-    ". head . . ." 
+    "head head head head head" 
     "hero hero hero hero hero" 
     ". . result . ."
     ". . trips . ."

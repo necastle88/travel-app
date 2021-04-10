@@ -1,4 +1,14 @@
 
+.form__input--destination {
+  height: 3rem;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid grey;
+  outline-color: #1586c3;
+  outline-offset: -1px;
+  margin-top: 12px;
+}
+
 .form__submit--enabled {
   background-color: #1586c3;
   border-radius: 8px;
@@ -6,7 +16,26 @@
   font-weight: 600;
   border: none;
   padding: 14px;
-  width: 100%;
+  width: 101.6%;
+  height: 2.8rem;
 }
 
+.form__input--arrival-date, .form__input--departure-date {
+  margin-top: 12px;
+  width: 98.4%;
+  border-radius: 6px;
+  height: 3rem;
+  padding-inline-start: 12px;
+  border: 1px solid gray;
+}
 
+.form__input--departure-date {
+  margin-bottom: 10px;
+}
+
+input[type="date" i] {
+  padding: -2px;
+  unicode-bidi: plaintext;
+  /* color: transparent; */
+  /* visibility: hidden; */
+}
