@@ -33,13 +33,9 @@
       color: white;
       background-color: #1586c3;
       align-self: end;
-
-      &:hover {
-        font-weight: bold;
-     
-      }
+      cursor: pointer;
     }
-
+    
     .card.card--weather {
       grid-area: weather;
       display: flex;
@@ -57,4 +53,9 @@
   background-position: center;
   border-radius: 12px 12px 0px 0px;
   overflow: hidden;
+}
+
+button.card.card--remove:hover {
+  background-color: #086495;
+  cursor: pointer;
 }
