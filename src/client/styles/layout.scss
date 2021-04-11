@@ -15,12 +15,13 @@ header {
 
 footer {
   grid-area: footer;
+  margin: 2rem 0 0 0;
 }
 
 body {
   display: grid;
   grid-template-columns: .1fr .3fr 1fr .3fr .1fr;
-  grid-template-rows: 0% 49% 34% 36% 9%;
+  grid-template-rows: 0% 31rem 24rem auto 8%;
   grid-template-areas:
     "head head head head head" 
     "hero hero hero hero hero" 
