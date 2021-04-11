@@ -31,7 +31,7 @@
       border-radius: 0px 0px 12px 12px;
       height: 45px;
       color: white;
-      background-color: steelblue;
+      background-color: #1586c3;
       align-self: end;
 
       &:hover {
@@ -47,6 +47,7 @@
 
   .card.card--details {
     grid-area: info;
+    padding: 14px;
 }
 .card.card--img {
   grid-area: image;
