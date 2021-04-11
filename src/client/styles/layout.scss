@@ -20,7 +20,7 @@ footer {
 body {
   display: grid;
   grid-template-columns: .1fr .3fr 1fr .3fr .1fr;
-  grid-template-rows: 0% 60% 40% 36% 9%;
+  grid-template-rows: 0% 49% 34% 36% 9%;
   grid-template-areas:
     "head head head head head" 
     "hero hero hero hero hero" 

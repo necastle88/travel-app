@@ -6,7 +6,7 @@
   border: 1px solid grey;
   outline-color: #1586c3;
   outline-offset: -1px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .form__submit--enabled {
@@ -18,10 +18,11 @@
   padding: 14px;
   width: 101.6%;
   height: 2.8rem;
+  margin-top: 6px;
 }
 
 .form__input--arrival-date, .form__input--departure-date {
-  margin-top: 12px;
+  margin-top: 8px;
   width: 98.4%;
   border-radius: 6px;
   height: 3rem;

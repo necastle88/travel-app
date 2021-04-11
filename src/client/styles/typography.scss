@@ -1,5 +1,18 @@
-$font-color: #3a4660;;
+$font-color: #3a4660;
+$heading-font: 'Karla', sans-serif;
+$body-font: 'Montserrat', sans-serif;
+
 
 h1,h2,h3,h4,h5,h6 {
-  color: $font-color;
+  color: #3a4660;
+  font-family: 'Karla', sans-serif;
+}
+
+h1 {
+  color: #3a4660;
+  font-family: 'Karla', sans-serif;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
 }
