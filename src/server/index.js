@@ -1,4 +1,4 @@
-let data = {};
+let data = [];
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -16,6 +16,54 @@ app.use(express.static("dist"));
 
 console.log(__dirname);
 
+const GEO_NAMES = {
+  key: encodeURI(process.env.GEO_NAMES),
+  apiUrl: `http://api.geonames.org/searchJSON?q=`,
+  location: ""//req.body.formText //.what ever I name it
+};
+
+const WEATHERBIT_API = {
+  key: process.env.WEATHERBIT,
+  apiUrl: `https://api.weatherbit.io/v2.0/current?lat=`,
+};
+
+const PIXABAY = {
+  key: process.env.PIXABAY,
+  apiUrl: `https://api.weatherbit.io/v2.0/current?lat=`,
+};
+
+const requestOptions = {
+method: 'GET',
+redirect: 'follow'
+};
+
+const postFetchresults = (location) => {
+  fetch(`${GEO_NAMES.apiUrl}${location}&maxRows=1&username=${GEO_NAMES.key}`, requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    let lat = result.geonames[0].lat;
+    let lon = result.geonames[0].lng;
+    const coords = {lat, lon}
+    
+    fetch(`${WEATHERBIT_API.apiUrl}${lat}&lon=${lon}&key=${WEATHERBIT_API.key}&units=I`, requestOptions)
+    .then(response => response.json())
+    .then(result => {
+      const weatherData = {...result.data};
+      //console.log(result) //do stuff with result;
+      fetch(`https://pixabay.com/api?key=${PIXABAY.key}&q=${location}&per_page=3&orientation="horizontal"`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          const hits = {...result.hits};
+          const pd = {weatherData, hits, coords};
+          data.push(pd);
+        })
+        .catch(error => console.log('error', error));    
+      })
+      .catch(error => console.log('error', error));
+  })
+  .catch(error => console.log('error', error));
+} 
+
 app.get("/", function (req, res) {
   res.sendFile("index.html", { root: "../../dist" });
 });
@@ -28,28 +76,9 @@ app.get("/data", (req, res) => {
   res.send(data);
 });
 
-app.post("/data", async (req, res) => {
-
-  // Meaning Cloud API
-  const API = {
-    key: process.env.API_KEY,
-    apiUrl: "https://api.meaningcloud.com/sentiment-2.1",
-    lang: "en",
-    text: req.body.formText //.what ever I name it
-  };
-
-  const requestOptions = {
-    method: "POST"
-  };
-
-  const response = await fetch(
-      `${API.apiUrl}?key=${API.key}&lang=${API.lang}&txt=${API.text}&model=general`, requestOptions
-      );
-  try {
-    const apiData = await response.json();
-    data = {...apiData}
-    res.send(data);
-  } catch (error) {
-    console.log("error", error);
-  }
+app.post("/data", (req, res) => {
+  console.log(req)
+  let location = "london";
+  postFetchresults(location);
 });
+
