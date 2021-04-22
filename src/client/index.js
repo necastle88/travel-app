@@ -6,26 +6,12 @@ import './styles/base.scss'
 const addedTrips = [];
 const getFromdate = document.querySelector('.form__input--arrival-date').value;
 const getResultContainer = document.querySelector('.result-container');
-const getResultSection = document.querySelector('.section--result');
-const style = document.createElement('style');
-document.head.appendChild(style);
+const getResultSection = document.querySelector('.section--result-hidden');
+const getResultSectionH2 = document.querySelector('.result--card-information-h2');
 
-const createResult = (data) => {
-  const resultDiv = document.createElement("div");
-  const cardDetailsDiv = document.createElement("div");
-  const cardInfoDiv = document.createElement("div");
-  const cardInfoH2 = document.createElement("h2");
-  const cardInfoP = document.createElement("p");
-  const cardWeatherDiv = document.createElement("div");
-  const cardWeatherImgDiv = document.createElement("div");
-  const cardWeatherDetialsDiv = document.createElement("div");
-  const cardWeatherDetialsP = document.createElement("p");
-
-  
-  resultDiv.setAttribute('class', 'result-container');
-  getResultSection.insertAdjacentElement('beforeend',resultDiv);
-
-
+const capitalize = (s) => {
+  if (typeof s !== 'string') return null
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 const getFromID = document.querySelector('.form__submit');
@@ -44,8 +30,13 @@ getFromID.addEventListener('click', (e) => {
         getResultContainer.classList.remove('result-container');
         getResultContainer.classList.add('result-container-missing-image');
       } */
-      createResult()
-      style.sheet.insertRule(`.result-container {background-image: url(${res.hits['0'].webformatURL})}`)
+      getResultContainer.style.backgroundImage =  `url(${res.hits['0'].webformatURL})`;
+      getResultSectionH2.textContent = `${capitalize(res.location)}`;
+      
+      if (getResultSection.className !== 'section--result-active') {
+        getResultSection.classList.add('section--result-active')
+        getResultSection.classList.remove('section--result-hidden')
+      }
     })
   }, 2000);
 })

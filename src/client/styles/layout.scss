@@ -5,7 +5,11 @@ header {
   text-align: right;
 }
 
-.section--result {
+.section--result-hidden {
+  display: none;
+}
+
+.section--result-active {
   grid-area: result;
 }
 

@@ -54,7 +54,7 @@ const postFetchresults = (location) => {
         .then(response => response.json())
         .then(result => {
           const hits = {...result.hits};
-          const pd = {weatherData, hits, coords};
+          const pd = {weatherData, hits, coords, location};
           data = {...pd};
         })
         .catch(error => console.log('error', error));    
