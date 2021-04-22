@@ -1,4 +1,4 @@
-let data = [];
+let data = {};
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -50,12 +50,12 @@ const postFetchresults = (location) => {
     .then(result => {
       const weatherData = {...result.data};
       //console.log(result) //do stuff with result;
-      fetch(`https://pixabay.com/api?key=${PIXABAY.key}&q=${location}&per_page=3&orientation="horizontal"`, requestOptions)
+      fetch(`https://pixabay.com/api?key=${PIXABAY.key}&q=${location}&category="travel"&per_page=3`, requestOptions)
         .then(response => response.json())
         .then(result => {
           const hits = {...result.hits};
           const pd = {weatherData, hits, coords};
-          data.push(pd);
+          data = {...pd};
         })
         .catch(error => console.log('error', error));    
       })
@@ -77,8 +77,7 @@ app.get("/data", (req, res) => {
 });
 
 app.post("/data", (req, res) => {
-  console.log(req)
-  let location = "london";
+  location = req.body.location;
   postFetchresults(location);
 });
 
