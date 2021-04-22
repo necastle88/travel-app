@@ -4,10 +4,15 @@ import { resetField } from './js/helpers/resetField'
 import './styles/base.scss'
 
 const addedTrips = [];
-const getFromdate = document.querySelector('.form__input--arrival-date').value;
+
 const getResultContainer = document.querySelector('.result-container');
 const getResultSection = document.querySelector('.section--result-hidden');
 const getResultSectionH2 = document.querySelector('.result--card-information-h2');
+const getResultSectionWeatherP = document.querySelector('.result--weather--detials-p');
+const getResultSectionWeatherIcon = document.querySelector('.result--weather-img-icon');
+const getResultArrival = document.querySelector('.result--weather--detials-arrival');
+const getResultDeparture = document.querySelector('.result--weather--detials-departure');
+
 
 const capitalize = (s) => {
   if (typeof s !== 'string') return null
@@ -30,12 +35,19 @@ getFromID.addEventListener('click', (e) => {
         getResultContainer.classList.remove('result-container');
         getResultContainer.classList.add('result-container-missing-image');
       } */
-      getResultContainer.style.backgroundImage =  `url(${res.hits['0'].webformatURL})`;
-      getResultSectionH2.textContent = `${capitalize(res.location)}`;
+    
       
       if (getResultSection.className !== 'section--result-active') {
+        getResultSectionWeatherIcon.setAttribute('src', `https://www.weatherbit.io/static/img/icons/${res.weatherData['0'].weather.icon}.png`)
         getResultSection.classList.add('section--result-active')
         getResultSection.classList.remove('section--result-hidden')
+
+        getResultContainer.style.backgroundImage =  `url(${res.hits['0'].webformatURL})`;
+        getResultSectionWeatherP.textContent = `${res.weatherData['0'].temp}\xB0`;
+        getResultSectionH2.textContent = `${capitalize(res.location)}`;
+        getResultArrival.textContent = `${getFromArrivalDate}`;
+        getResultDeparture.textContent = `${getFromDepartureDate}`;
+
       }
     })
   }, 2000);

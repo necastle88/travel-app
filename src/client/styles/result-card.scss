@@ -7,7 +7,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "result-info result-details";
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   display: grid;
 }
 .result-container-missing-image {
@@ -24,6 +24,9 @@
   display: grid;
 }
 
+.result--weather {
+  display: inline-flex;
+}
 
 .result--card-details {
   grid-area: result-details;
