@@ -1,6 +1,6 @@
 .hero--background {
     grid-area: hero;
-    background-image: url(http://localhost:8081/7aec4a09aa540c3e6663.jpg);
+    background-image: url('/src/client/media/images/beach.jpg');
     background-repeat: no-repeat;
     background-position: 0% 100%;
     background-size: 100%;
@@ -19,4 +19,12 @@
   box-shadow: 0px 6px 20px rgb(0 0 0 / 20%);
   align-self: center;
   grid-area: form;
+  }
+
+  .hero__header--logo {
+    background-image: url('/src/client/media/images/logo.png');
+    background-size: 42px;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    height: 100px;
   }

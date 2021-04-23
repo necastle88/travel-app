@@ -11,7 +11,6 @@
 <body>
     <header>
         <div class="header hero__header--logo">
-            logo
         </div>
     </header>
     
@@ -21,11 +20,11 @@
             <p>Discover uncharted destinations perfect for any vacation.</p>
             <div class="form form--hero-search">
                 <form class="form form--hero">
-                    <input class="form__input form__input--destination" placeholder="Location" type="text" />
+                    <input class="form__input form__input--destination" placeholder="Location" type="text" required/>
                     <label for="arrival">Arrival:</label>
-                    <input class="form__input form__input--arrival-date" id="arrival" type="date" />
+                    <input class="form__input form__input--arrival-date" id="arrival" type="date" required />
                     <label for="departure">Departure:</label>
-                    <input class="form__input form__input--departure-date" id="departure" type="date" />
+                    <input class="form__input form__input--departure-date" id="departure" type="date" required />
                     <input class="form__submit form__submit--enabled" type="submit" />
                 </form>
             </div>
@@ -49,10 +48,10 @@
                     </div>
                 </div>
                 <div>
-                    <p class='result--weather--detials-arrival'>Arrival: 12/31/2021</p>
-                    <p class='result--weather--detials-departure'>Departure: 12/31/2021</p>
+                    <p class='result--weather--detials-arrival'></p>
+                    <p class='result--weather--detials-departure'></p>
                 </div>
-                <p>365 days till you arrive</p>
+                <p class="result--weather--countdown"></p>
                 <button class="card--add">Book it</button>
             </div>
     </section>
