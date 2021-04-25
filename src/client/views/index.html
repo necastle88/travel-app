@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <title>NLP</title>
+    <title>Air Travel</title>
 </head>
 
 <body>
@@ -56,7 +57,7 @@
                 <button class="card--add">Book it</button>
             </div>
     </section>
-    <section class="section section--trips-added">
+    <section class="section section--trips-hidden">
         <h2>Your travel plans</h2>
         <div class="card-container"></div>
     </section>
@@ -65,5 +66,13 @@
         <p>&#169 Air Travel</p>
     </footer>
 </body>
-
+<script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js');
+        });
+    }
+   </script>
 </html>

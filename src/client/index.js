@@ -4,7 +4,7 @@ import { resetField } from "./js/helpers/resetField";
 import { countDown } from "./js/helpers/countDown";
 import { capitalize } from "./js/helpers/capitalize";
 import { formatDate } from "./js/helpers/formatDate";
-import "./styles/base.scss";
+import "./styles/style.scss";
 
 const trips = [];
 let currentTrip = {};
@@ -18,9 +18,14 @@ const getResultSectionWeatherIcon = document.querySelector(".result--weather-img
 const getResultArrival = document.querySelector(".result--weather--detials-arrival");
 const getResultDeparture = document.querySelector(".result--weather--detials-departure");
 const getResultStopwatch = document.querySelector(".result--weather--countdown");
+const getAddedTips = document.querySelector(".section--trips-hidden");
 const getFromID = document.querySelector(".form__submit");
 
-if (trips === []) {
+if ('serviceWorker' in navigator) {
+  // Use the window load event to keep the page load performant
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js');
+  });
 }
 
 getFromID.addEventListener("click", (e) => {
@@ -72,6 +77,10 @@ const addTrip = document.querySelector(".card--add");
 
 addTrip.addEventListener("click", (event) => {
   event.preventDefault();
+
+  getAddedTips.classList.add("section--trips-added");
+  getAddedTips.classList.remove("section--trips-hidden");
+
   trips.push(currentTrip);
   cardContainer.innerHTML = "";
   renderData();
@@ -80,7 +89,7 @@ addTrip.addEventListener("click", (event) => {
 
 const renderData = () => {
   if(trips === []) return
-  
+
   trips.forEach((trip, index) => {
     const alt = `image of ${trip.userInput.location}`;
     const weatherIconURL = `https://www.weatherbit.io/static/img/icons/${trip.weather.weather.icon}.png`;
@@ -95,7 +104,7 @@ const renderData = () => {
           <p>Departure: ${trip.userInput.departure}</p>
         </div>
         <div class="card card--weather">
-              <img class="card weather--img" src='${weatherIconURL}' alt='${alt}' width='100' />
+              <img class="card weather--img" src='${weatherIconURL}' alt='${alt}' />
             <h4 class="card weather--temp">${trip.weather.temp}\xB0</h4>
         </div>
       </div>

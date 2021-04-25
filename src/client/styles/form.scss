@@ -1,18 +1,17 @@
+.form__input--destination {
+  height: 3rem;
+  width: 97.4%;
+  border-radius: 6px;
+  border: 1px solid grey;
+  outline-color: #1586c3;
+  outline-offset: -1px;
+  margin-top: 14px;
+  color: lightblue;
+}
 
-  .form__input--destination {
-    height: 3rem;
-    width: 97.4%;
-    border-radius: 6px;
-    border: 1px solid grey;
-    outline-color: #1586c3;
-    outline-offset: -1px;
-    margin-top: 14px;
-    color: lightblue;
-
-  }
-  .form__input--destination:placeholder {
-    color: #1586c3;
-  }
+.form__input--destination:placeholder {
+  color: #1586c3;
+}
 
 .form__submit--enabled {
   background-color: #1586c3;
@@ -25,14 +24,14 @@
   height: 2.8rem;
   margin-top: 6px;
   cursor: pointer;
-
-
 }
+
 .form__submit--enabled:hover {
   background-color: #086495;
 }
 
-.form__input--arrival-date, .form__input--departure-date {
+.form__input--arrival-date,
+.form__input--departure-date {
   margin-top: 8px;
   width: 84.4%;
   border-radius: 6px;
@@ -42,13 +41,14 @@
   outline-color: #1586c3;
   outline-offset: -1px;
 }
+
 .form__input--departure-date {
   margin-bottom: 10px;
 }
 
 input[type="date" i] {
   padding-left: 77px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 12px;
   color: gray;
 }
@@ -65,7 +65,7 @@ input#departure {
 
 input[type="text" i] {
   padding-left: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 12px;
   color: gray;
 }
@@ -74,7 +74,23 @@ label {
   margin: 25px 0 0 14px;
   z-index: 9999;
   position: absolute;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 12px;
   color: gray;
+}
+
+@media (min-width: 1281px) {
+  /* CSS */
+}
+
+// Desktop
+@media (min-width: 1025px) and (max-width: 1280px) {
+  /* CSS */
+}
+
+// Tablets
+
+// Smart Phone
+@media (min-width: 481px) and (max-width: 767px) {
+  /* CSS */
 }

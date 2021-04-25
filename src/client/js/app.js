@@ -1,2 +1,0 @@
-import handleSubmit from './formHandler';
-
