@@ -20,15 +20,23 @@ const getResultDeparture = document.querySelector(".result--weather--detials-dep
 const getResultStopwatch = document.querySelector(".result--weather--countdown");
 const getAddedTips = document.querySelector(".section--trips-hidden");
 const getFromID = document.querySelector(".form__submit");
+const getInputField  = document.querySelector(".form__input");
 
-if ('serviceWorker' in navigator) {
-  // Use the window load event to keep the page load performant
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js');
-  });
-}
+
 
 getFromID.addEventListener("click", (e) => {
+  let location = document.querySelector(".form__input").value;
+  let arrivalDate = document.getElementById('arrival').value;
+
+  if(!location || !arrivalDate) {
+    getInputField.removeAttribute('placeholder');
+    getInputField.setAttribute('placeholder', 'Please fill all fields')
+    return
+  }
+  
+  getInputField.removeAttribute('placeholder');
+  getInputField.setAttribute('placeholder', 'Location')
+
   currentTrip = {};
   handleSubmit(e);
   setTimeout(() => {

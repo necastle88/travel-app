@@ -5,6 +5,7 @@ async function handleSubmit(event) {
   let location = document.querySelector(".form__input").value;
   let arrivalDate = document.getElementById('arrival').value;
   let departureDate = document.getElementById('departure').value;
+
   const userInput = {
     "location": location,
     "arrival": arrivalDate,

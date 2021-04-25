@@ -38,18 +38,17 @@
   padding: 10% 0 0 47%;
   
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 640px) {
   .result--card-details {
     grid-area: result-details;
     background-color: #fff;
-    background: linear-gradient(360deg, rgb(255 255 255) 41%, rgba(0 212 256 / 0) 100%);
-    border-radius: 0px 0px 21px 20px;
     display: flex;
-    flex-direction: co;
-    padding: 49% 0 0 0%;
-  } 
+    margin-left: -9px;
+    flex-direction: column;
+    padding: 14% 10% 0%;
+  }
 }
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .result--card-details {
     grid-area: result-details;
     background-color: #fff;
@@ -60,8 +59,6 @@
     padding: 13% 0 0 10%;
   }
 }
-
-
 
 .card--add {
   background-color: #1586c3;
