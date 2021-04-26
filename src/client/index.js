@@ -125,9 +125,7 @@ const renderData = () => {
     
     removeTrip.addEventListener("click", (event) => {
       event.preventDefault();
-      console.log(index, trips)
       trips.splice(index, 1);
-      console.log(index, trips)
       cardContainer.innerHTML = "";
       renderData();
     });

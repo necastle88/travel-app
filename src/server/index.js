@@ -38,7 +38,6 @@ redirect: 'follow'
 };
 
 const postFetchresults = (userInput) => {
-  console.log(userInput)
   fetch(`${GEO_NAMES.apiUrl}${userInput.location}&maxRows=1&username=${GEO_NAMES.key}`, requestOptions)
   .then(response => response.json())
   .then(result => {
@@ -50,7 +49,6 @@ const postFetchresults = (userInput) => {
     .then(response => response.json())
     .then(result => {
       const weatherData = {...result.data};
-      //console.log(result) //do stuff with result;
       fetch(`https://pixabay.com/api?key=${PIXABAY.key}&q=${userInput.location}&category="travel"&per_page=3`, requestOptions)
         .then(response => response.json())
         .then(result => {

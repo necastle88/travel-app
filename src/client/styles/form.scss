@@ -7,10 +7,12 @@
   outline-offset: -1px;
   margin-top: 14px;
   color: #3a4660;
+
 }
 
-.form__input--destination:placeholder {
-  color: #1586c3;
+.form__input--destination::placeholder {
+  color: #3a4660;
+  padding-left: 10px;  
 }
 
 .form__submit--enabled {
