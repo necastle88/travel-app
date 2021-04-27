@@ -1,3 +1,4 @@
+// creates a new date object based on today
 const todaysDate = () => {
 
   let today = new Date();

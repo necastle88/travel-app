@@ -1,6 +1,9 @@
 import { postData } from "./helpers/postData";
 
 // gets and posts user data to the server 
+// from location field string expected
+// arrival data date has to be in yyyy-mm-dd
+// and departure date yyyy-mm-dd
 async function handleSubmit(event) {
   event.preventDefault();
   let location = document.querySelector(".form__input").value;
