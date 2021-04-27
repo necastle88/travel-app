@@ -30,12 +30,17 @@ getDateArrivalField.setAttribute('min', todaysDate());
 getDateDepartureField.setAttribute('min', todaysDate());
 getDateArrivalField.setAttribute('max', futureDate(new Date(), 16))
 
+// Checks if an object is empty 
 const isObjEmpty = (obj) => {
   for (let i in obj) return false;
   return true
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  /* Form submission 
+    Gets userinput/images/coords
+    then renders the first result card
+  */
   getFromID.addEventListener("click", (e) => {
     let location = document.querySelector(".form__input").value;
     let arrivalDate = document.getElementById("arrival").value;
@@ -54,13 +59,12 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       fetchData("/data")
         .then((res, rej) => {
+        // gets days
         let days = res.userInput.days - 1;
-        console.log(isObjEmpty(res.hits))
          if(res.userInput.days < 0 || res.userInput.days > 16) {
             console.log(days)
             days = 0
           } 
-         
 
           if (getResultSection.className !== "section--result-active") {
             getResultSectionWeatherIcon.removeAttribute("src");
@@ -70,7 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
             );
             getResultSection.classList.add("section--result-active");
             getResultSection.classList.remove("section--result-hidden");
-
+            //checks if there are hits if not use defualt image
             getResultContainer.style.backgroundImage = `url(${isObjEmpty(res.hits) ?
               'https://picsum.photos/id/203/1000/760.jpg' : res.hits["0"].largeImageURL  
           })`;
@@ -96,9 +100,11 @@ window.addEventListener('DOMContentLoaded', () => {
               getResultDeparture.textContent = `Arrival: N/A`;
             }
           }
+          // creates tucated obj for trip cards
           const fetchedTrip = {
             userInput: res.userInput,
             weather: res.weatherData[`${days}`],
+            //checks if there are hits if not use defualt image
             image: isObjEmpty(res.hits) ?
             'https://picsum.photos/id/203/1000/760.jpg' : res.hits["0"].largeImageURL,
           };
@@ -112,6 +118,7 @@ window.addEventListener('DOMContentLoaded', () => {
     resetField(".form__input");
   });
 
+  /* adds a tip based on the currently searched trip*/
   const addTrip = document.querySelector(".card--add");
 
   addTrip.addEventListener("click", (event) => {
@@ -124,7 +131,7 @@ window.addEventListener('DOMContentLoaded', () => {
     cardContainer.innerHTML = "";
     renderData();
   });
-
+  // Renders added trip cards
   const renderData = () => {
     if (trips === []) return;
 

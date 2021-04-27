@@ -1,5 +1,6 @@
 import { postData } from "./helpers/postData";
 
+// gets and posts user data to the server 
 async function handleSubmit(event) {
   event.preventDefault();
   let location = document.querySelector(".form__input").value;

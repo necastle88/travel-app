@@ -16,28 +16,29 @@ app.use(express.static("dist"));
 
 console.log(__dirname);
 
+// Api info Geonames
 const GEO_NAMES = {
   key: encodeURI(process.env.GEO_NAMES),
   apiUrl: `http://api.geonames.org/searchJSON?q=`,
-  location: ""//req.body.formText //.what ever I name it
 };
-
+// Api info weatherbit
 const WEATHERBIT_API = {
   key: process.env.WEATHERBIT,
   apiUrl: `https://api.weatherbit.io/v2.0/forecast/daily?`,
 };
-
+// Api info Pixabay
 const PIXABAY = {
   key: process.env.PIXABAY,
   type: 'photo',
   category: 'travel'
 };
-
+// post headers
 const requestOptions = {
 method: 'GET',
 redirect: 'follow'
 };
 
+// posts data to server coordinates Geonames/Gets forecat WeatherBit/Get images pixabay 
 const postFetchresults = (userInput) => {
   fetch(`${GEO_NAMES.apiUrl}${userInput.location}&maxRows=1&username=${GEO_NAMES.key}`, requestOptions)
   .then(response => response.json())
