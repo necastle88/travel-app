@@ -24,12 +24,13 @@ const GEO_NAMES = {
 
 const WEATHERBIT_API = {
   key: process.env.WEATHERBIT,
-  apiUrl: `https://api.weatherbit.io/v2.0/current?lat=`,
+  apiUrl: `https://api.weatherbit.io/v2.0/forecast/daily?`,
 };
 
 const PIXABAY = {
   key: process.env.PIXABAY,
-  apiUrl: `https://api.weatherbit.io/v2.0/current?lat=`,
+  type: 'photo',
+  category: 'travel'
 };
 
 const requestOptions = {
@@ -45,11 +46,11 @@ const postFetchresults = (userInput) => {
     let lon = result.geonames[0].lng;
     const coords = {lat, lon}
     
-    fetch(`${WEATHERBIT_API.apiUrl}${lat}&lon=${lon}&key=${WEATHERBIT_API.key}&units=I`, requestOptions)
+    fetch(`${WEATHERBIT_API.apiUrl}lat=${lat}&lon=${lon}&key=${WEATHERBIT_API.key}&units=I`, requestOptions)
     .then(response => response.json())
     .then(result => {
       const weatherData = {...result.data};
-      fetch(`https://pixabay.com/api?key=${PIXABAY.key}&q=${userInput.location}&category="travel"&per_page=3`, requestOptions)
+      fetch(`https://pixabay.com/api/?key=${PIXABAY.key}&q=${userInput.location}&image_type=${PIXABAY.type}&category=${PIXABAY.category}&per_page=3`, requestOptions)
         .then(response => response.json())
         .then(result => {
           const hits = {...result.hits};
@@ -62,10 +63,6 @@ const postFetchresults = (userInput) => {
   })
   .catch(error => console.log('error', error));
 } 
-
-app.get("/", function (req, res) {
-  res.sendFile("index.html", { root: "../../dist" });
-});
 
 app.listen(port, function () {
   console.log("Example app listening on port " + port);

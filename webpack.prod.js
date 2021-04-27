@@ -3,15 +3,17 @@ const webpack = require("webpack")
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 
 module.exports = {
   entry: "/src/client/index.js",
   output: {
-    libraryTarget: 'var',
-    library: 'Client'
+    path: path.resolve(process.cwd(), "dist"),
+    libraryTarget: "var",
+    library: "Client",
   },
   mode: 'production',
-  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -23,7 +25,7 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
@@ -41,6 +43,13 @@ module.exports = {
         template: "./src/client/views/index.html",
         filename: "./index.html",
     }),
+    new CleanWebpackPlugin({
+      dry: false,
+      verbose: true,
+      cleanStaleWebpackAssets: true,
+      protectWebpackAssets: false,
+    }),
+    new MiniCssExtractPlugin(),
     new ImageMinimizerPlugin({
       minimizerOptions: {
         // Lossless optimization with custom option

@@ -2,77 +2,72 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <title>Air Travel</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+	<title>Air Travel</title>
 </head>
 
 <body>
-    <header>
-        <div class="header hero__header--logo">
-        </div>
-    </header>
-    
-    <div class="hero--background">
-        <div class="hero--form-container">
-            <h1>Explore your next memory</h1>
-            <p>Discover uncharted destinations perfect for any vacation.</p>
-            <div class="form form--hero-search">
-                <form class="form form--hero">
-                    <input class="form__input form__input--destination" placeholder="Location" type="text" required/>
-                    <label for="arrival">Arrival:</label>
-                    <input class="form__input form__input--arrival-date" id="arrival" type="date" required />
-                    <label for="departure">Departure:</label>
-                    <input class="form__input form__input--departure-date" id="departure" type="date" required />
-                    <input class="form__submit form__submit--enabled" type="submit" />
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <section class="section section--result-hidden">
-        <h2>Your next destination</h2>
-        <div class="result-container">
-            <div class="result--card-details">
-                <div class="div result--card-information">
-                    <p class="result--card-information-p">Going to</p>
-                    <h2 class="result--card-information-h2">''</h2>
-                </div>
-                <div class="result--weather">
-                    <div class="result--weather-img">
-                        <img class='result--weather-img-icon' alt="Weather Icon" width="50">
-                    </div>
-                    <div class="result--weather-detials">
-                        <p class="result--weather--detials-p"></p>
-                    </div>
-                </div>
-                <div>
-                    <p class='result--weather--detials-arrival'></p>
-                    <p class='result--weather--detials-departure'></p>
-                </div>
-                <p>Your trip begins:</p>
-                <p class="result--weather--countdown"></p>
-                <button class="card--add">Book it</button>
-            </div>
-    </section>
-    <section class="section section--trips-hidden">
-        <h2>Your travel plans</h2>
-        <div class="card-container"></div>
-    </section>
-    <footer>
-        <hr>
-        <p>&#169 Air Travel</p>
-    </footer>
+	<header>
+		<div class="header hero__header--logo"> </div>
+	</header>
+	<div class="hero--background">
+		<div class="hero--form-container">
+			<h1>Explore your next memory</h1>
+			<p>Discover uncharted destinations perfect for any vacation.</p>
+			<div class="form form--hero-search">
+				<form class="form form--hero">
+					<input class="form__input form__input--destination" placeholder="Location" type="text" required/>
+					<label for="arrival">Arrival:</label>
+					<input class="form__input form__input--arrival-date" id="arrival" type="date" required />
+					<label for="departure">Departure:</label>
+					<input class="form__input form__input--departure-date" id="departure" type="date" required />
+					<input class="form__submit form__submit--enabled" type="submit" /> </form>
+			</div>
+		</div>
+	</div>
+	<section class="section section--result-hidden">
+		<h2>Your next destination</h2>
+		<div class="result-container">
+			<div class="result--card-details">
+				<div class="div result--card-information">
+					<p class="result--card-information-p">Going to</p>
+					<h2 class="result--card-information-h2">''</h2> </div>
+				<div class="result--weather">
+					<div class="result--weather-img"> <img src='../media/images/logo.png' class='result--weather-img-icon' alt="Weather Icon" width="50"> </div>
+					<div class="result--weather-detials">
+						<p class="result--weather--detials-p"></p>
+					</div>
+				</div>
+				<div>
+					<p class='result--weather--detials-arrival'></p>
+					<p class='result--weather--detials-departure'></p>
+				</div>
+				<p>Your trip begins:</p>
+				<p class="result--weather--countdown"></p>
+				<button class="card--add">Book it</button>
+			</div>
+		</div>
+	</section>
+	<section class="section section--trips-hidden">
+		<h2>Your travel plans</h2>
+		<div class="card-container"></div>
+	</section>
+	<footer>
+		<hr>
+		<p>&#169;Air Travel</p>
+	</footer>
+	<script>
+	// Check that service workers are supported
+	if('serviceWorker' in navigator) {
+		// Use the window load event to keep the page load performant
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/service-worker.js');
+		});
+	}
+	</script>
 </body>
-<script>
-    // Check that service workers are supported
-    if ('serviceWorker' in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js');
-        });
-    }
-   </script>
+
 </html>
