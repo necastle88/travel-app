@@ -1,4 +1,4 @@
-function futureDate(theDate, days) {
+exports.futureDate = (theDate, days) => {
  
   let theFuture = new Date(theDate.getTime() + days*24*60*60*1000);
   let dd = String(theFuture.getDate()).padStart(2, '0');
@@ -8,5 +8,3 @@ function futureDate(theDate, days) {
   theFuture = `${yyyy}-${mm}-${dd}`;
  return theFuture
 }
-
-export { futureDate }

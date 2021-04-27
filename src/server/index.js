@@ -6,6 +6,7 @@ let path = require("path");
 const fetch = require("node-fetch");
 const express = require("express");
 const cors = require("cors");
+const days = require("./helpers/days.js");
 const app = express();
 const port = 8081;
 
@@ -45,8 +46,8 @@ const postFetchresults = (userInput) => {
   .then(result => {
     let lat = result.geonames[0].lat;
     let lon = result.geonames[0].lng;
+    let daysIdx = days.days(16);
     const coords = {lat, lon}
-    
     fetch(`${WEATHERBIT_API.apiUrl}lat=${lat}&lon=${lon}&key=${WEATHERBIT_API.key}&units=I`, requestOptions)
     .then(response => response.json())
     .then(result => {
@@ -55,7 +56,7 @@ const postFetchresults = (userInput) => {
         .then(response => response.json())
         .then(result => {
           const hits = {...result.hits};
-          const pd = {weatherData, hits, coords, userInput};
+          const pd = {weatherData, hits, coords, userInput, daysIdx};
           data = {...pd};
         })
         .catch(error => console.log('error', error));    
