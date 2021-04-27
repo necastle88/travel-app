@@ -25,11 +25,19 @@ const getFromID = document.querySelector(".form__submit");
 const getInputField = document.querySelector(".form__input");
 const getDateArrivalField = document.querySelector(".form__input--arrival-date");
 const getDateDepartureField = document.querySelector(".form__input--departure-date");
-
+const getDateWeatherImgDiv = document.querySelector(".result--weather-img");
+const weatherIcon = document.createElement('img');
+//<img src='../media/images/logo.png' class='result--weather-img-icon' alt="Weather Icon" width="50"> 
 getDateArrivalField.setAttribute('min', todaysDate());
 getDateDepartureField.setAttribute('min', todaysDate());
-getDateArrivalField.setAttribute('max', futureDate(new Date(), 16))
+getDateArrivalField.setAttribute('max', futureDate(new Date(), 16));
 
+weatherIcon.setAttribute('src', 'https://picsum.photos/id/1011/50.jpg');
+weatherIcon.setAttribute('class', 'result--weather-img-icon');
+weatherIcon.setAttribute('alt', 'Weather Icon');
+weatherIcon.setAttribute('width', '50');
+
+getDateWeatherImgDiv.insertAdjacentElement('afterbegin',weatherIcon)
 // Checks if an object is empty 
 const isObjEmpty = (obj) => {
   for (let i in obj) return false;
@@ -44,8 +52,9 @@ window.addEventListener('DOMContentLoaded', () => {
   getFromID.addEventListener("click", (e) => {
     let location = document.querySelector(".form__input").value;
     let arrivalDate = document.getElementById("arrival").value;
+    let departueDate = document.getElementById("departure").value;
 
-    if (!location || !arrivalDate) {
+    if (!location || !arrivalDate || !departueDate) {
       getInputField.removeAttribute("placeholder");
       getInputField.setAttribute("placeholder", "Please fill all fields");
       return;
@@ -62,13 +71,12 @@ window.addEventListener('DOMContentLoaded', () => {
         // gets days
         let days = res.userInput.days - 1;
          if(res.userInput.days < 0 || res.userInput.days > 16) {
-            console.log(days)
             days = 0
           } 
 
           if (getResultSection.className !== "section--result-active") {
-            getResultSectionWeatherIcon.removeAttribute("src");
-            getResultSectionWeatherIcon.setAttribute(
+            weatherIcon.removeAttribute("src");
+            weatherIcon.setAttribute(
               "src",
               `https://www.weatherbit.io/static/img/icons/${res.weatherData[`${days}`].weather.icon}.png`
             );
@@ -111,7 +119,6 @@ window.addEventListener('DOMContentLoaded', () => {
           return fetchedTrip;
         })
         .then((res, rej) => {
-          console.log(res)
           currentTrip = { ...res };
         });
     }, 2000);
